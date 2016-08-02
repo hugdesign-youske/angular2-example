@@ -1,0 +1,44 @@
+<h1>
+  {{title}}
+</h1>
+
+<div>
+  <p *ngIf="true">
+    Hello NgIf true
+  </p>
+
+  <p *ngIf="false">
+    Bye NgIf false
+  </p>
+
+  <p *ngIf="showMessage">
+    show Message
+  </p>
+</div>
+
+<h2> TestTable </h2>
+
+<table class="testStyle">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr *ngFor="let row of tableRows">
+    <td>{{ row.id }}</td>
+    <td>{{ row.message }}</td>
+  </tr>
+  </tbody>
+</table>
+
+<hr>
+
+CustomButton Input Message: <input type="text" [(ngModel)]="customButtonInputMessage" />
+
+<custom-button
+  [buttonMessage]="customButtonInputMessage"
+  (buttonEventEmitter)="receiveFromCustomButton($event)">
+</custom-button>
