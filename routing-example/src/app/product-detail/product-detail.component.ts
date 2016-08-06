@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   moduleId: module.id,
   selector: 'app-product-detail',
-  templateUrl: 'product-detail.component.html',
-  styleUrls: ['product-detail.component.css']
+  template: `
+    Product Detail works! <br>
+    Product Id: {{ productId }}
+  `
 })
-export class ProductDetailComponent implements OnInit {
+export class ProductDetailComponent {
+  public productId: string;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private route: ActivatedRoute) {
+    route.params.subscribe(params => this.productId = params['id']);
   }
-
 }

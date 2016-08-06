@@ -3,8 +3,9 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   moduleId: module.id,
   selector: 'app-products',
-  templateUrl: 'products.component.html',
-  styleUrls: ['products.component.css']
+  template: `
+  Product component works!
+  `
 })
 export class ProductsComponent implements OnInit {
 
