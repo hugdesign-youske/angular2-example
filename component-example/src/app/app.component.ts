@@ -4,26 +4,30 @@ import {CustomButtonComponent} from "./custom-button/custom-button.component";
 @Component({
   moduleId: module.id,
   selector: 'app-root',
-  templateUrl: 'app.component.html',
-  styleUrls: ['app.component.css'],
-  directives: [CustomButtonComponent],
-  encapsulation: ViewEncapsulation.Emulated
+  template: `
+  <h1 class="testStyle">
+  Hello Angular2 MultiComponent
+  </h1>
+  
+  CustomButton Input Message: <input type="text" [(ngModel)]="customButtonInputMessage" />
+  
+  <custom-button
+    [buttonMessage]="customButtonInputMessage"
+    (buttonEventEmitter)="receiveFromCustomButton($event)">
+  </custom-button>
+  `,
+  styles: [`
+  .testStyle {
+    border: 1px solid black;
+  }
+  `],
+  directives: [CustomButtonComponent]
 })
 export class AppComponent {
-  public title: string;
-  public showMessage: boolean;
-  public tableRows: any[];
-  public customButtonInputMessage: string = "Hello!";
+  public customButtonInputMessage: string;
 
   ngOnInit() {
-    this.title = "Hello Angular2 Component";
-    this.showMessage = true;
-
-    this.tableRows = [
-      { id: 1000, message: "Hello World"},
-      { id: 1001, message: "Hello Angular2"},
-      { id: 1002, message: "Bye"},
-    ];
+    this.customButtonInputMessage = "Hello!";
   }
 
   public receiveFromCustomButton(message) {

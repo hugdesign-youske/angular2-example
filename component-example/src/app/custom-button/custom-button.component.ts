@@ -3,8 +3,15 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
 @Component({
   moduleId: module.id,
   selector: 'custom-button',
-  templateUrl: 'custom-button.component.html',
-  styleUrls: ['custom-button.component.css']
+  template: `
+  <div class="testStyle">
+    custom-button works!
+
+    <button (click)="emitButtonMessage()">
+      {{ buttonMessage }}
+    </button>
+  </div>
+  `
 })
 export class CustomButtonComponent {
   @Input() buttonMessage: string;
