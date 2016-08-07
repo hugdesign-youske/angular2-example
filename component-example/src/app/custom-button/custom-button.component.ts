@@ -1,8 +1,10 @@
-import {Component, Input, Output, EventEmitter} from '@angular/core';
+import {Component, EventEmitter} from '@angular/core';
 
 @Component({
   moduleId: module.id,
   selector: 'custom-button',
+  inputs: ['buttonMessage'],
+  outputs: ['buttonEventEmitter'],
   template: `
   <div class="testStyle">
     custom-button works!
@@ -14,8 +16,8 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
   `
 })
 export class CustomButtonComponent {
-  @Input() buttonMessage: string;
-  @Output() buttonEventEmitter : EventEmitter<string>;
+  buttonMessage: string;
+  buttonEventEmitter : EventEmitter<string>;
 
   constructor() {
     this.buttonEventEmitter = new EventEmitter();
